@@ -11,6 +11,7 @@ function MovieLoaderItem() {
       foregroundColor="#ada4a4"
       className="my-2"
       title="loading movie..."
+      uniqueKey="movies"
     >
       <rect x="0" y="0%" rx="4px" ry="4px" width="100%" height="100px" />
     </ContentLoader>

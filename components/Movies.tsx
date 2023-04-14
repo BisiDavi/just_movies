@@ -5,18 +5,21 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 import MovieCard from "@/components/MovieCard";
+import MovieLoader from "@/components/MovieLoader";
 import type { MovieType } from "@/types";
-import MovieLoader from "./MovieLoader";
+
+const options = ["home", "avengers", "africa", "magic", "gold", "action"];
+const item = options[Math.floor(Math.random() * options.length)];
 
 function fetchMovies() {
   return axios.get(
-    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=home`
+    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${item}`
   );
 }
 
 export default function Movies() {
   const { data, status } = useQuery({
-    queryKey: ["movies"],
+    queryKey: [item],
     queryFn: fetchMovies,
   });
 
@@ -39,7 +42,7 @@ export default function Movies() {
           }}
         >
           {data.data.Search.map((movie: MovieType) => (
-            <MovieCard key={movie.imdbId} movie={movie} />
+            <MovieCard key={`${movie.imdbId}-${movie.Title}`} movie={movie} />
           ))}
         </Grid>
       )}
