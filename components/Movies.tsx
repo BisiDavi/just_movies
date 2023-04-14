@@ -6,6 +6,7 @@ import axios from "axios";
 
 import MovieCard from "@/components/MovieCard";
 import type { MovieType } from "@/types";
+import MovieLoader from "./MovieLoader";
 
 function fetchMovies() {
   return axios.get(
@@ -24,7 +25,7 @@ export default function Movies() {
       {status === "error" ? (
         <Typography>Unable to fetch movies</Typography>
       ) : status === "loading" ? (
-        <Typography>Fetching...</Typography>
+        <MovieLoader />
       ) : (
         <Grid
           container
