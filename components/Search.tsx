@@ -2,6 +2,7 @@ import Input from "@mui/material/Input";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
 
 export default function Search() {
   return (
@@ -20,9 +21,11 @@ export default function Search() {
       />
       <InputAdornment
         position="end"
-        sx={{ position: "absolute", zIndex: 4, right: "10px", top: "16px" }}
+        sx={{ position: "absolute", zIndex: 4, right: "0px", top: "16px" }}
       >
-        <SearchIcon />
+        <Button>
+          <SearchIcon />
+        </Button>
       </InputAdornment>
     </Box>
   );
