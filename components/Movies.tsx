@@ -20,7 +20,7 @@ export default function Movies() {
   });
 
   return (
-    <Container sx={{ my: 4 }}>
+    <Container sx={{ my: 8 }}>
       {status === "error" ? (
         <Typography>Unable to fetch movies</Typography>
       ) : status === "loading" ? (
@@ -32,7 +32,7 @@ export default function Movies() {
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-            columnGap: "10px",
+            rowGap: "10px",
           }}
         >
           {data.data.Search.map((movie: MovieType) => (
