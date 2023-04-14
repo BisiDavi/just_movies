@@ -22,7 +22,7 @@ export default function Movies() {
   });
 
   return (
-    <Container sx={{ my: 8 }}>
+    <Container sx={{ my: { md: 8, xs: 4 }, px: 3 }}>
       {status === "error" ? (
         <Typography>Unable to fetch movies</Typography>
       ) : status === "loading" ? (
