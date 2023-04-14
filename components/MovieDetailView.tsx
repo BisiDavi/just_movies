@@ -49,7 +49,14 @@ export default function MovieDetailView({ movie }: Props) {
           p: { md: "0px 20px !important", xs: "6px 0px !important" },
         }}
       >
-        <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: "center",
+            mb: 2,
+            fontSize: { lg: "36px", xs: "24px" },
+          }}
+        >
           {movie.Title} - <span style={{ fontSize: "20px" }}>{movie.Year}</span>
         </Typography>
         <Typography>Plot: {movie.Plot}</Typography>
