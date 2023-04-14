@@ -27,7 +27,7 @@ export default function MovieDetailView({ movie }: Props) {
         md={6}
         sx={{
           position: "relative",
-          minHeight: "500px",
+          minHeight: { lg: "500px", xs: "400px" },
           my: { xs: 2, md: 0 },
           p: 0,
         }}
