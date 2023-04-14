@@ -7,7 +7,7 @@ export default function Logo() {
     <Link href="/" style={{ textDecoration: "none" }}>
       <Box sx={{ border: "1px solid white", py: 1, px: 2 }}>
         <Typography sx={{ fontWeight: "bold", color: "white" }}>
-          Book
+          Mail
           <Box sx={{ color: "black" }} component="span">
             Movies
           </Box>

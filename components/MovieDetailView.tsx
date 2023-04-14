@@ -39,7 +39,7 @@ export default function MovieDetailView({ movie }: Props) {
         <Typography>IMDb Rating: {movie.imdbRating}</Typography>
         <Typography>IMDb Votes: {movie.imdbVotes}</Typography>
         {movie.BoxOffice && (
-          <Typography>BoxOffice: {movie.BoxOffice}</Typography>
+          <Typography>Box Office: {movie.BoxOffice}</Typography>
         )}
         <Box sx={{ mt: 2 }}>
           <Typography>Ratings</Typography>

@@ -10,17 +10,17 @@ export const options = [
   "magic",
   "panther",
   "action",
-  "wit",
+  "man",
 ];
 
 export default function fetchMovies(movieOptions: string) {
   return axios.get(
-    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movieOptions}`
+    `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movieOptions}`
   );
 }
 
 export function fetchMovie(id: any): Promise<{ data: movieDetailType }> {
   return axios.get(
-    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
+    `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
   );
 }
