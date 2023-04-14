@@ -3,7 +3,7 @@ import type { movieDetailType } from "@/types";
 
 export const options = [
   "home",
-  "love",
+  "family",
   "avengers",
   "john",
   "africa",
