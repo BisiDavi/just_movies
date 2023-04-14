@@ -29,7 +29,7 @@ export default function Header() {
             display: "flex",
             justifyContent: "space-between",
             width: "100%",
-            p: { lg: 2, xs: 3 },
+            p: { lg: 2, xs: "20px 30px" },
             flexDirection: { lg: "row", xs: "column" },
             gap: { xs: 4, lg: 0 },
             alignItems: "center",

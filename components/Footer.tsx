@@ -11,7 +11,7 @@ export default function Footer() {
         textAlign: "center",
       }}
     >
-      <Typography>
+      <Typography sx={{ fontSize: { xs: "14px", lg: "16px" } }}>
         Made with ❤️ by{" "}
         <a
           href="https://olubisi-david.vercel.app/"
