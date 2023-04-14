@@ -12,7 +12,6 @@ export default function Movies() {
 
   useEffect(() => {
     const movie = options[Math.floor(Math.random() * options.length)];
-
     setMovieOptions(movie);
   }, []);
 

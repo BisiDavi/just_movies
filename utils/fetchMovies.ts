@@ -17,3 +17,11 @@ export default function fetchMovies(movieOptions: string) {
     `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movieOptions}`
   );
 }
+
+export function fetchMovie(id: any) {
+  if (id) {
+    return axios.get(
+      `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
+    );
+  }
+}
