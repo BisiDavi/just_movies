@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   movie: "",
+  searching: false,
 };
 
 const MovieSlice = createSlice({
@@ -14,8 +15,12 @@ const MovieSlice = createSlice({
     resetSearch(state) {
       state.movie = "";
     },
+    setSearchingStatus(state, action: PayloadAction<boolean>) {
+      state.searching = action.payload;
+    },
   },
 });
 
-export const { searchMovie, resetSearch } = MovieSlice.actions;
+export const { searchMovie, resetSearch, setSearchingStatus } =
+  MovieSlice.actions;
 export default MovieSlice.reducer;
