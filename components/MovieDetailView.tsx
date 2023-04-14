@@ -11,11 +11,11 @@ interface Props {
 export default function MovieDetailView({ movie }: Props) {
   return (
     <Grid
-    container
+      container
       spacing={4}
       sx={{
         m: 0,
-        p: "16px",
+        p: "8px",
         width: "100%",
         justifyContent: "space-between",
         alignItems: "start",
