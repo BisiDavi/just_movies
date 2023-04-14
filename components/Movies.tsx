@@ -8,7 +8,15 @@ import MovieCard from "@/components/MovieCard";
 import MovieLoader from "@/components/MovieLoader";
 import type { MovieType } from "@/types";
 
-const options = ["home", "avengers", "africa", "magic", "gold", "action"];
+const options = [
+  "home",
+  "avengers",
+  "africa",
+  "magic",
+  "gold",
+  "action",
+  "wit",
+];
 const item = options[Math.floor(Math.random() * options.length)];
 
 function fetchMovies() {

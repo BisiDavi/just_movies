@@ -37,12 +37,15 @@ export default function MovieCard({ movie }: Props) {
         <Typography
           sx={{
             fontWeight: 600,
-            textAlign: "center",
             fontSize: "14px",
             maxWidth: "200px",
-            display: "flex",
             margin: "5px auto 20px auto",
             justifyContent: "center",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            display: "block",
+            textAlign: "center",
           }}
         >
           {movie.Title} ({movie.Year})
