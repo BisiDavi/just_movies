@@ -10,7 +10,9 @@ import type { MovieType } from "@/types";
 
 const options = [
   "home",
+  "love",
   "avengers",
+  "john",
   "africa",
   "magic",
   "gold",
