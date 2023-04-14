@@ -28,11 +28,10 @@ export default function MovieCard({ movie }: Props) {
           alignItems: "center",
           height: "390px",
           width: "100%",
-          position: "relative",
         }}
         item
       >
-        <Paper sx={{ height: "100%" }}>
+        <Paper sx={{ height: "100%", position: "relative" }}>
           <Image
             src={movie.Poster}
             alt={movie.Title}
