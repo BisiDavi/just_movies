@@ -8,7 +8,7 @@ export const options = [
   "john",
   "africa",
   "magic",
-  "gold",
+  "panther",
   "action",
   "wit",
 ];
