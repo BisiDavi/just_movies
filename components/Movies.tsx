@@ -6,19 +6,23 @@ import { useEffect, useState } from "react";
 import MovieLoader from "@/components/MovieLoader";
 import MovieGrid from "@/components/MovieGrid";
 import fetchMovies, { options } from "@/utils/fetchMovies";
+import { useAppSelector } from "@/redux/store";
 
 export default function Movies() {
   const [movieOptions, setMovieOptions] = useState("");
+  const { movie } = useAppSelector((state) => state.movie);
 
   useEffect(() => {
-    const movie = options[Math.floor(Math.random() * options.length)];
-    setMovieOptions(movie);
+    const randomMovie = options[Math.floor(Math.random() * options.length)];
+    setMovieOptions(randomMovie);
   }, []);
 
+  const movieName = movie ? movie : movieOptions;
+
   const { data, status } = useQuery({
-    queryKey: [movieOptions],
-    queryFn: () => fetchMovies(movieOptions),
-    enabled: !!movieOptions,
+    queryKey: [movieName],
+    queryFn: () => fetchMovies(movieName),
+    enabled: !!movieName,
   });
 
   return (

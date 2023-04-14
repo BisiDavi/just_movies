@@ -2,7 +2,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import moviesReducer from "@/redux/movies-slice";
 
 const reducers = combineReducers({
-  movies: moviesReducer,
+  movie: moviesReducer,
 });
 
 export type RootState = ReturnType<typeof reducers>;
