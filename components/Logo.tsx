@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <Box>
       <Typography>
-        Book<span>Movies</span>
+        Just<span>Movies</span>
       </Typography>
     </Box>
   );
