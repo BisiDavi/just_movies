@@ -20,7 +20,10 @@ export default function MoviesPage() {
 
   return (
     <Layout>
-      <Container component="section" sx={{ minHeight: "82vh", py: 8 }}>
+      <Container
+        component="section"
+        sx={{ minHeight: "82vh", py: { xs: 4, md: 6 } }}
+      >
         {status === "error" ? (
           <Typography>Error fetching data</Typography>
         ) : status === "loading" ? (

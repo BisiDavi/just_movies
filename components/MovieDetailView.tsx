@@ -10,18 +10,22 @@ interface Props {
 
 export default function MovieDetailView({ movie }: Props) {
   return (
-    <Grid container>
-      <Grid item xs={12} md={6}>
+    <Grid container spacing={4} sx={{ m: 0, p: "16px", width: "100%" }}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        sx={{ position: "relative", minHeight: "500px", my: 2 }}
+      >
         <Image
           src={movie.Poster}
           alt={movie.Title}
-          height={500}
-          width={500}
           placeholder="blur"
           blurDataURL={movie.Poster}
+          fill
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} sx={{ p: "6px 0px !important", m: 0 }}>
         <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>
           {movie.Title} - <span style={{ fontSize: "20px" }}>{movie.Year}</span>
         </Typography>

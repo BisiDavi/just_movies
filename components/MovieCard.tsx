@@ -68,7 +68,7 @@ export default function MovieCard({ movie }: Props) {
               marginBottom: 0.5,
               position: "absolute",
               fontSize: "12px",
-              left: "8px",
+              left: 0,
               bottom: 0,
             }}
           >
