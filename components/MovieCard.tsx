@@ -12,10 +12,13 @@ interface Props {
 }
 
 export default function MovieCard({ movie }: Props) {
-  console.log("movie", movie);
   const movieSlug = toSlug(movie.Title);
+
   return (
-    <Link href={`/${movieSlug}?type=${movie.Type}&imdbId=${movie.imdbID}`}>
+    <Link
+      style={{ textDecoration: "none" }}
+      href={`/${movieSlug}?type=${movie.Type}&imdbId=${movie.imdbID}`}
+    >
       <Grid
         sx={{
           display: "flex",
@@ -65,7 +68,8 @@ export default function MovieCard({ movie }: Props) {
               borderBottomRightRadius: 4,
               marginBottom: 0.5,
               position: "absolute",
-              left: "15px",
+              fontSize: "12px",
+              left: "8px",
               bottom: 0,
             }}
           >
