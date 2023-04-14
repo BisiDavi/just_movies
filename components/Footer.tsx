@@ -13,7 +13,11 @@ export default function Footer() {
     >
       <Typography>
         Made with ❤️ By{" "}
-        <a href="https://olubisi-david.vercel.app/" target="_blank">
+        <a
+          href="https://olubisi-david.vercel.app/"
+          target="_blank"
+          style={{ color: "red", textDecoration:"none" }}
+        >
           Dave
         </a>
       </Typography>

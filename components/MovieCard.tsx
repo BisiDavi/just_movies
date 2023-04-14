@@ -15,14 +15,14 @@ interface Props {
 export default function MovieCard({ movie }: Props) {
   return (
     <Grid
-      xs={12}
-      md={3}
       sx={{
         display: "flex",
         flexDirection: "column",
         margin: "auto",
         justifyContent: "center",
         alignItems: "center",
+        height: "300px",
+        position: "relative",
       }}
       item
     >
@@ -34,6 +34,7 @@ export default function MovieCard({ movie }: Props) {
           width={250}
           blurDataURL={movie.Poster}
           placeholder="blur"
+          style={{ borderTopRightRadius: "4px", borderTopLeftRadius: "4px" }}
         />
         <Typography
           sx={{
@@ -57,6 +58,9 @@ export default function MovieCard({ movie }: Props) {
             borderTopRightRadius: 4,
             borderBottomRightRadius: 4,
             marginBottom: 0.5,
+            position: "absolute",
+            left: "15px",
+            bottom: 0,
           }}
         >
           {movie.Type}

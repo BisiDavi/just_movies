@@ -25,7 +25,15 @@ export default function Movies() {
       ) : status === "loading" ? (
         <Typography>Fetching...</Typography>
       ) : (
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+            columnGap: "10px",
+          }}
+        >
           {data.data.Search.map((movie) => (
             <MovieCard key={movie.imdbId} movie={movie} />
           ))}
