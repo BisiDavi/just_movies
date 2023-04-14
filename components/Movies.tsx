@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 import MovieCard from "@/components/MovieCard";
+import type { MovieType } from "@/types";
 
 function fetchMovies() {
   return axios.get(
@@ -34,7 +35,7 @@ export default function Movies() {
             columnGap: "10px",
           }}
         >
-          {data.data.Search.map((movie) => (
+          {data.data.Search.map((movie: MovieType) => (
             <MovieCard key={movie.imdbId} movie={movie} />
           ))}
         </Grid>

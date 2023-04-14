@@ -3,13 +3,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 
+import type { MovieType } from "@/types";
+
 interface Props {
-  movie: {
-    Poster: string;
-    Title: string;
-    Year: string;
-    Type: string;
-  };
+  movie: MovieType;
 }
 
 export default function MovieCard({ movie }: Props) {
