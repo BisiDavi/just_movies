@@ -1,8 +1,10 @@
-import { Grid, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Image from "next/image";
+
+import MovieCard from "@/components/MovieCard";
 
 function fetchMovies() {
   return axios.get(
@@ -15,7 +17,7 @@ export default function Movies() {
     queryKey: ["movies"],
     queryFn: fetchMovies,
   });
-  console.log("data", data);
+
   return (
     <Container sx={{ my: 4 }}>
       {status === "error" ? (
@@ -23,26 +25,9 @@ export default function Movies() {
       ) : status === "loading" ? (
         <Typography>Fetching...</Typography>
       ) : (
-        <Grid container sx={{ margin: "auto", display: "flex" }}>
+        <Grid container spacing={2}>
           {data.data.Search.map((movie) => (
-            <Grid
-              key={movie.imdbId}
-              xs={12}
-              md={3}
-              sx={{ my: 2, mx: 0, display: "flex", flexDirection: "column" }}
-            >
-              <Image
-                src={movie.Poster}
-                alt={movie.Title}
-                height={200}
-                width={250}
-                blurDataURL={movie.Poster}
-                placeholder="blur"
-              />
-              <Typography sx={{ fontWeight: 600, textAlign: "center", my: 1 }}>
-                {movie.Title}
-              </Typography>
-            </Grid>
+            <MovieCard key={movie.imdbId} movie={movie} />
           ))}
         </Grid>
       )}
