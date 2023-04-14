@@ -4,12 +4,24 @@ import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import MailIcon from "@mui/icons-material/Mail";
+import { useState } from "react";
 
 interface Props {
   title: string;
 }
 
 export default function SubscribeForm({ title }: Props) {
+  const [userEmail, setUserEmail] = useState("");
+
+  function inputHandler(e: any) {
+    setUserEmail(e.target.value);
+  }
+
+  function onSubmitHandler() {
+    if (userEmail) {
+    }
+  }
+
   return (
     <Box sx={{ mt: 10 }}>
       <Typography sx={{ fontWeight: "bold", mb: 2 }}>
@@ -24,8 +36,9 @@ export default function SubscribeForm({ title }: Props) {
           backgroundColor: "red",
           p: "5px 10px",
           borderRadius: "4px",
-          width: "80%",
+          width: { lg: "80%", xs: "100%" },
         }}
+        onSubmit={onSubmitHandler}
       >
         <Input
           placeholder="Email Address"
@@ -37,6 +50,7 @@ export default function SubscribeForm({ title }: Props) {
             borderBottomLeftRadius: "4px",
           }}
           type="email"
+          onChange={inputHandler}
           required
         />
         <InputAdornment
@@ -59,6 +73,7 @@ export default function SubscribeForm({ title }: Props) {
               opacity: 0.5,
             },
           }}
+          type="submit"
         >
           Submit
         </Button>
