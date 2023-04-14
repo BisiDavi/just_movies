@@ -1,8 +1,10 @@
-import Layout from "@/layout";
-import { fetchMovie } from "@/utils/fetchMovies";
-import { Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+
+import SpinnerRipple from "@/components/SpinnerRipple";
+import Layout from "@/layout";
+import { fetchMovie } from "@/utils/fetchMovies";
 
 export default function MoviesPage() {
   const router = useRouter();
@@ -13,10 +15,21 @@ export default function MoviesPage() {
     enabled: !!router.query.imdbId,
   });
 
-
   return (
     <Layout>
-      <Container component="section"></Container>
+      <Container component="section" sx={{ minHeight: "82vh", py: 8 }}>
+        {status === "error" ? (
+          <Typography>Error fetching data</Typography>
+        ) : 5 ? (
+          <Box sx={{ height: "50vh", display: "flex" }}>
+            <SpinnerRipple />
+          </Box>
+        ) : (
+          <Box>
+            <Typography>{}</Typography>
+          </Box>
+        )}
+      </Container>
     </Layout>
   );
 }
