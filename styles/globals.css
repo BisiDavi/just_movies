@@ -11,6 +11,14 @@ body {
 }
 
 .search_movies input::placeholder {
-  color: white;
+  color: black;
   opacity: 1;
+}
+
+.search_movies input {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-bottom: 0px;
+  color: black;
 }
