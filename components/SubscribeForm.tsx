@@ -5,12 +5,13 @@ import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import MailIcon from "@mui/icons-material/Mail";
 import { useState } from "react";
+import type { movieDetailType } from "@/types";
 
 interface Props {
-  title: string;
+  movie: movieDetailType;
 }
 
-export default function SubscribeForm({ title }: Props) {
+export default function SubscribeForm({ movie }: Props) {
   const [userEmail, setUserEmail] = useState("");
 
   function inputHandler(e: any) {
@@ -25,7 +26,7 @@ export default function SubscribeForm({ title }: Props) {
   return (
     <Box sx={{ mt: 10 }}>
       <Typography sx={{ fontWeight: "bold", mb: 2 }}>
-        Drop your email address to receive full gist about {title}
+        Drop your email address to receive full gist about {movie.Title}
       </Typography>
       <Box
         component="form"

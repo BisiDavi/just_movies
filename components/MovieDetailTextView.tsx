@@ -53,7 +53,7 @@ export default function MovieDetailTextView({ movie }: Props) {
           </Typography>
         ))}
       </Box>
-      <SubscribeForm title={movie.Title} />
+      <SubscribeForm movie={movie} />
     </Grid>
   );
 }
