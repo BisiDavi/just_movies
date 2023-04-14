@@ -7,6 +7,8 @@ interface Props {
   movie: {
     Poster: string;
     Title: string;
+    Year: string;
+    Type: string;
   };
 }
 
@@ -33,8 +35,31 @@ export default function MovieCard({ movie }: Props) {
           blurDataURL={movie.Poster}
           placeholder="blur"
         />
-        <Typography sx={{ fontWeight: 600, textAlign: "center", my: 1 }}>
-          {movie.Title}
+        <Typography
+          sx={{
+            fontWeight: 600,
+            textAlign: "center",
+            fontSize: "14px",
+            maxWidth: "200px",
+            display: "flex",
+            margin: "5px auto 20px auto",
+            justifyContent: "center",
+          }}
+        >
+          {movie.Title} ({movie.Year})
+        </Typography>
+        <Typography
+          sx={{
+            backgroundColor: "red",
+            color: "white",
+            px: 1,
+            width: "fit-content",
+            borderTopRightRadius: 4,
+            borderBottomRightRadius: 4,
+            marginBottom: 0.5,
+          }}
+        >
+          {movie.Type}
         </Typography>
       </Paper>
     </Grid>
