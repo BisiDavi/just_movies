@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { movieDetailType } from "@/types";
 
 export const options = [
   "home",
@@ -18,10 +19,8 @@ export default function fetchMovies(movieOptions: string) {
   );
 }
 
-export function fetchMovie(id: any) {
-  if (id) {
-    return axios.get(
-      `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
-    );
-  }
+export function fetchMovie(id: any): Promise<{ data: movieDetailType }> {
+  return axios.get(
+    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
+  );
 }

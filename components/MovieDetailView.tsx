@@ -2,28 +2,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
+import type { movieDetailType } from "@/types";
 
 interface Props {
-  movie: {
-    Poster: string;
-    Title: string;
-    Year: string;
-    Plot: string;
-    Director: string;
-    Writer: string;
-    Actors: string;
-    Language: string;
-    Awards: string;
-    Country: string;
-    Released: string;
-    Runtime: string;
-    Genre: string;
-    Rated: string;
-    imdbRating: string;
-    imdbVotes: string;
-    BoxOffice: string;
-    Ratings: Array<{ Source: String; Value: string }>;
-  };
+  movie: movieDetailType;
 }
 
 export default function MovieDetailView({ movie }: Props) {

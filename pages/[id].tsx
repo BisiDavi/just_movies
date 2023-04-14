@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 
 import SpinnerRipple from "@/components/SpinnerRipple";
 import Layout from "@/layout";
-import { fetchMovie } from "@/utils/fetchMovies";
 import MovieDetailView from "@/components/MovieDetailView";
+import { fetchMovie } from "@/utils/fetchMovies";
 
 export default function MoviesPage() {
   const router = useRouter();
