@@ -11,21 +11,26 @@ interface Props {
 export default function MovieDetailView({ movie }: Props) {
   return (
     <Grid
-      container
+    container
       spacing={4}
       sx={{
         m: 0,
         p: "16px",
         width: "100%",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "start",
       }}
     >
       <Grid
         item
         xs={12}
         md={6}
-        sx={{ position: "relative", minHeight: "500px", my: 2 }}
+        sx={{
+          position: "relative",
+          minHeight: "500px",
+          my: { xs: 2, md: 0 },
+          p: 0,
+        }}
       >
         <Image
           src={movie.Poster}
@@ -39,7 +44,10 @@ export default function MovieDetailView({ movie }: Props) {
         item
         xs={12}
         md={6}
-        sx={{ m: 0, p: { md: "0px 10px", xs: "6px 0px !important" } }}
+        sx={{
+          m: 0,
+          p: { md: "0px 20px !important", xs: "6px 0px !important" },
+        }}
       >
         <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>
           {movie.Title} - <span style={{ fontSize: "20px" }}>{movie.Year}</span>
