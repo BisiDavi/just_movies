@@ -25,7 +25,8 @@ export default function Header() {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            p: 2
+            width: "100%",
+            p: 2,
           }}
         >
           <Logo />
