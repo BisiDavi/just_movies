@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import toSlug from "@/utils/toSlug";
 import type { MovieType } from "@/types";
+import { Box } from "@mui/material";
 
 interface Props {
   movie: MovieType;
@@ -26,21 +27,25 @@ export default function MovieCard({ movie }: Props) {
           margin: "auto",
           justifyContent: "center",
           alignItems: "center",
-          height: "390px",
+          height: "360px",
           width: "100%",
         }}
         item
       >
-        <Paper sx={{ height: "100%", position: "relative" }}>
-          <Image
-            src={movie.Poster}
-            alt={movie.Title}
-            height={300}
-            width={270}
-            blurDataURL={movie.Poster}
-            placeholder="blur"
-            style={{ borderTopRightRadius: "4px", borderTopLeftRadius: "4px" }}
-          />
+        <Paper sx={{ height: "100%", width: "100%", position: "relative" }}>
+          <Box sx={{ height: "300px", width: "100%", position: "relative" }}>
+            <Image
+              src={movie.Poster}
+              alt={movie.Title}
+              blurDataURL={movie.Poster}
+              placeholder="blur"
+              style={{
+                borderTopRightRadius: "4px",
+                borderTopLeftRadius: "4px",
+              }}
+              fill
+            />
+          </Box>
           <Typography
             sx={{
               fontWeight: 600,

@@ -30,7 +30,7 @@ export default function Header() {
             justifyContent: "space-between",
             width: "100%",
             p: { lg: 2, xs: "20px 30px" },
-            flexDirection: { lg: "row", xs: "column" },
+            flexDirection: { md: "row", xs: "column" },
             gap: { xs: 4, lg: 0 },
             alignItems: "center",
           }}

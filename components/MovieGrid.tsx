@@ -19,7 +19,7 @@ export default function MovieGrid({ data }: Props) {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
-        rowGap: "20px",
+        gap: "30px",
         m: 0,
         width: "100%",
       }}
