@@ -9,6 +9,10 @@ function fetchMovies() {
 }
 
 export default function Movies({ movies }: any) {
-    const {} = useQuery({})
+  const { data, status } = useQuery({
+    queryKey: ["movies"],
+    queryFn: fetchMovies,
+  });
+  console.log("data", data);
   return <Box></Box>;
 }
