@@ -32,8 +32,10 @@ export default function Movies() {
           spacing={2}
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
             rowGap: "10px",
+            m: 0,
+            width: "100%",
           }}
         >
           {data.data.Search.map((movie: MovieType) => (

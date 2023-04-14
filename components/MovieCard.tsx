@@ -18,17 +18,18 @@ export default function MovieCard({ movie }: Props) {
         margin: "auto",
         justifyContent: "center",
         alignItems: "center",
-        height: "300px",
+        height: "390px",
+        width: "100%",
         position: "relative",
       }}
       item
     >
-      <Paper>
+      <Paper sx={{ height: "100%" }}>
         <Image
           src={movie.Poster}
           alt={movie.Title}
-          height={200}
-          width={250}
+          height={300}
+          width={270}
           blurDataURL={movie.Poster}
           placeholder="blur"
           style={{ borderTopRightRadius: "4px", borderTopLeftRadius: "4px" }}
