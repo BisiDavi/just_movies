@@ -10,7 +10,17 @@ interface Props {
 
 export default function MovieDetailView({ movie }: Props) {
   return (
-    <Grid container spacing={4} sx={{ m: 0, p: "16px", width: "100%" }}>
+    <Grid
+      container
+      spacing={4}
+      sx={{
+        m: 0,
+        p: "16px",
+        width: "100%",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
       <Grid
         item
         xs={12}
@@ -25,7 +35,12 @@ export default function MovieDetailView({ movie }: Props) {
           fill
         />
       </Grid>
-      <Grid item xs={12} md={6} sx={{ p: "6px 0px !important", m: 0 }}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        sx={{ m: 0, p: { md: "0px 10px", xs: "6px 0px !important" } }}
+      >
         <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>
           {movie.Title} - <span style={{ fontSize: "20px" }}>{movie.Year}</span>
         </Typography>
