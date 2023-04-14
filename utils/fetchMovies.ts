@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const options = [
+export const options = [
   "home",
   "love",
   "avengers",
@@ -11,10 +11,9 @@ const options = [
   "action",
   "wit",
 ];
-export const movie = options[Math.floor(Math.random() * options.length)];
 
-export default function fetchMovies() {
+export default function fetchMovies(movieOptions: string) {
   return axios.get(
-    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movie}`
+    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movieOptions}`
   );
 }

@@ -12,13 +12,21 @@ export default function Footer() {
       }}
     >
       <Typography>
-        Made with ❤️ By{" "}
+        Made with ❤️ by{" "}
         <a
           href="https://olubisi-david.vercel.app/"
           target="_blank"
-          style={{ color: "red", textDecoration:"none" }}
+          style={{ color: "red", textDecoration: "none", marginRight: "5px" }}
         >
           Dave
+        </a>
+        and powered by{" "}
+        <a
+          href="https://www.omdbapi.com/"
+          target="_blank"
+          style={{ color: "red", textDecoration: "none" }}
+        >
+          OMDb API
         </a>
       </Typography>
     </Box>
