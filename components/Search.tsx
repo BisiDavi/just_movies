@@ -15,15 +15,14 @@ import {
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Search() {
-  const { search } = useAppSelector((state) => state.movie);
   const dispatch = useAppDispatch();
-  const { movie, searching } = useAppSelector((state) => state.movie);
+  const { movie, searching ,search} = useAppSelector((state) => state.movie);
 
   function searchHandler() {
     if (!movie) {
       dispatch(searchMovie(search));
       dispatch(setSearchingStatus(true));
-    } else {
+    } else if(movie) {
       dispatch(resetSearch());
     }
   }
