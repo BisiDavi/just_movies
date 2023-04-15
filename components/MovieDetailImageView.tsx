@@ -24,6 +24,8 @@ export default function MovieDetailImageView({ movie }: Props) {
         alt={movie.Title}
         placeholder="blur"
         blurDataURL={movie.Poster}
+        sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,50vw"
         fill
       />
     </Grid>
