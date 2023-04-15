@@ -37,11 +37,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             ],
           })
           .then(() => {
-            res.status(200).send("message sent");
+            return res.status(200).send("message sent");
           });
       } catch (error) {
-        console.log("error", error);
-        res.status(400).send("message error");
+        console.log("error again,olubisi", error);
+        return res.status(400).send("message error");
       }
     }
   }
