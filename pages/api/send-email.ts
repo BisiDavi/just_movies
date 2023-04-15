@@ -1,14 +1,7 @@
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  name: string;
-};
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, data } = req.body;
   switch (req.method) {
     case "POST": {
@@ -31,18 +24,23 @@ export default function handler(
                   Name: email,
                 },
               ],
-              TemplateID: "",
+              TemplateID: process.env.MAILJET_TEMPLATE_ID,
               TemplateLanguage: true,
-              Subject: "",
-              Variables: data,
+              Subject: "Details about your favourite Movie",
+              Variables: { ...data },
               TemplateErrorReporting: {
                 Email: "oludavidconnect@gmail.com",
                 name: "Olubisi David",
               },
             },
           ],
+        })
+        .then(() => {
+          res.status(200).json({ status: "message sent" });
+        })
+        .catch((error) => {
+          res.status(400).json({ status: "message error", error });
         });
-      res.status(200).json({ name: "John Doe" });
     }
   }
 }

@@ -1,10 +1,12 @@
+import axios from "axios";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import MailIcon from "@mui/icons-material/Mail";
-import { useState } from "react";
+
 import type { movieDetailType } from "@/types";
 
 interface Props {
@@ -20,6 +22,7 @@ export default function SubscribeForm({ movie }: Props) {
 
   function onSubmitHandler() {
     if (userEmail) {
+      axios.post("/api/send-email", { data: movie });
     }
   }
 
