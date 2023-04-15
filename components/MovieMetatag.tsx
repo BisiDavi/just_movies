@@ -1,5 +1,6 @@
 import Head from "next/head";
 import type { movieDetailType } from "@/types";
+import generateMovieLD from "@/utils/generateMovieLD";
 
 interface Props {
   movie: movieDetailType;
@@ -15,6 +16,11 @@ export default function MovieMetatag({ movie }: Props) {
       <meta property="og:image" content={movie.Poster} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateMovieLD(movie)}
+        key="movie-jsonld"
+      />
     </Head>
   );
 }
