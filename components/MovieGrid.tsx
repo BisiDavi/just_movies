@@ -7,17 +7,15 @@ import type { MovieType } from "@/types";
 
 interface Props {
   data: {
-    data: {
-      Search: MovieType[];
-      Response: "True" | "False";
-    };
+    Search: MovieType[];
+    Response: "True" | "False";
   };
 }
 
 export default function MovieGrid({ data }: Props) {
   return (
     <>
-      {data.data.Response === "True" ? (
+      {data.Response === "True" ? (
         <Grid
           container
           spacing={2}
@@ -30,7 +28,7 @@ export default function MovieGrid({ data }: Props) {
             minHeight: "500px",
           }}
         >
-          {data.data.Search.map((movie: MovieType) => (
+          {data.Search.map((movie: MovieType) => (
             <MovieCard key={`${movie.imdbID}-${movie.Title}`} movie={movie} />
           ))}
         </Grid>

@@ -14,13 +14,9 @@ export const options = [
 ];
 
 export default function fetchMovies(movieOptions: string) {
-  return axios.get(
-    `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&s=${movieOptions}`
-  );
+  return axios.post("/api/get-movies", { search: movieOptions });
 }
 
 export function fetchMovie(id: any): Promise<{ data: movieDetailType }> {
-  return axios.get(
-    `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_MOVIE_API}&i=${id}`
-  );
+  return axios.post("/api/get-movie", { id });
 }

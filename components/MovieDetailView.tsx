@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function MovieDetailView({ movie }: Props) {
+  console.log("movie", movie);
   return (
     <Grid
       container

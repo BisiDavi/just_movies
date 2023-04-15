@@ -37,7 +37,7 @@ export default function Movies() {
       ) : status === "loading" ? (
         <MovieLoader />
       ) : (
-        <MovieGrid data={data} />
+        <MovieGrid data={data.data} />
       )}
     </Container>
   );
