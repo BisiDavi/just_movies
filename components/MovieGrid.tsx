@@ -17,7 +17,7 @@ interface Props {
 export default function MovieGrid({ data }: Props) {
   return (
     <>
-      {data.data.Response === "True" && (
+      {data.data.Response === "True" ? (
         <Grid
           container
           spacing={2}
@@ -34,8 +34,7 @@ export default function MovieGrid({ data }: Props) {
             <MovieCard key={`${movie.imdbID}-${movie.Title}`} movie={movie} />
           ))}
         </Grid>
-      )}
-      {data.data.Response !== "True" && (
+      ) : (
         <Box sx={{ minHeight: "66vh", display: "flex" }}>
           <Typography
             variant="h4"
