@@ -6,8 +6,17 @@ import Search from "@/components/Search";
 import { Container } from "@mui/material";
 import { useRouter } from "next/router";
 
+import useScroll from "@/hooks/useScroll";
+
 export default function Header() {
   const router = useRouter();
+  const { scroll } = useScroll();
+
+  const headerPosition =
+    Number(scroll) > 100
+      ? { position: "fixed", top: 0, width: "100%", zIndex: 10, left: 0 }
+      : "";
+
   return (
     <>
       <Head>
@@ -24,6 +33,7 @@ export default function Header() {
         sx={{
           bgcolor: "red",
           color: "white",
+          ...headerPosition,
         }}
       >
         <Container

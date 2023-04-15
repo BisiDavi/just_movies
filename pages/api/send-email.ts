@@ -2,10 +2,13 @@ import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { email, data } = req.body;
+  const reqBody = JSON.parse(req.body);
+  const { email, movie } = reqBody;
+
   switch (req.method) {
     case "POST":
       try {
+        console.log("movie", movie);
         return mailjet
           .apiConnect(
             `${process.env.MAILJET_API_KEY}`,
@@ -17,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               {
                 From: {
                   Email: "oludavidconnect@gmail.com",
-                  Name: "MailMovies",
+                  Name: "oludavidconnect@gmail.com",
                 },
                 To: [
                   {
@@ -25,10 +28,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
                     Name: email,
                   },
                 ],
-                TemplateID: `${process.env.MAILJET_TEMPLATE_ID}`,
-                TemplateLanguage: true,
-                Subject: `Details about ${data.Title}`,
-                Variables: { ...data },
+                // TemplateID: `${process.env.MAILJET_TEMPLATE_ID}`,
+                // TemplateLanguage: true,
+                Subject: `Details about`,
+                // Variables: { ...movie },
+                TextPart: "Hello David",
                 TemplateErrorReporting: {
                   Email: "oludavidconnect@gmail.com",
                   name: "Olubisi David",

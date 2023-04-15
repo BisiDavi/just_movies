@@ -22,12 +22,18 @@ export default function SubscribeForm({ movie }: Props) {
 
   async function onSubmitHandler(e: any) {
     e.preventDefault();
-    if (email) {
-      await axios
-        .post("/api/send-email", { data: movie, email })
-        .then((resp) => console.log("resp", resp))
-        .catch((err) => console.log("error-mail", err));
-    }
+    await fetch("/api/send-email", {
+      method: "post",
+      body: JSON.stringify({
+        movie,
+        email,
+      }),
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((resp) => console.log("respo", resp))
+      .catch((err) => console.log("error", err));
   }
 
   return (
@@ -35,16 +41,15 @@ export default function SubscribeForm({ movie }: Props) {
       <Typography sx={{ fontWeight: "bold", mb: 2 }}>
         Drop your email address to receive full gist about {movie.Title}
       </Typography>
-      <Box
-        component="form"
-        sx={{
+      <form
+        style={{
           display: "flex",
           alignItems: "center",
           position: "relative",
           backgroundColor: "red",
-          p: "5px 10px",
+          padding: "5px 10px",
           borderRadius: "4px",
-          width: { lg: "80%", xs: "100%" },
+          width: "100%",
         }}
         onSubmit={onSubmitHandler}
       >
@@ -85,7 +90,7 @@ export default function SubscribeForm({ movie }: Props) {
         >
           Submit
         </Button>
-      </Box>
+      </form>
     </Box>
   );
 }
