@@ -5,10 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
 import SpinnerRipple from "@/components/SpinnerRipple";
-import Layout from "@/layout";
 import MovieDetailView from "@/components/MovieDetailView";
-import { fetchMovie } from "@/utils/fetchMovies";
 import MovieMetatag from "@/components/MovieMetatag";
+import { fetchMovie } from "@/utils/fetchMovies";
+import Layout from "@/layout";
 
 export default function MoviesPage() {
   const router = useRouter();

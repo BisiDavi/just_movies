@@ -16,6 +16,9 @@ export default function Header() {
       ? { position: "fixed", top: 0, width: "100%", zIndex: 10, left: 0 }
       : "";
 
+  const headerClassName =
+    Number(scroll) > 100 ? "animate__animated animate__fadeInUp" : "";
+
   return (
     <Box
       component="header"
