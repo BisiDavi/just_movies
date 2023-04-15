@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box";
-import Head from "next/head";
-
-import Logo from "@/components/Logo";
-import Search from "@/components/Search";
 import { Container } from "@mui/material";
 import { useRouter } from "next/router";
 
+import Logo from "@/components/Logo";
+import Search from "@/components/Search";
+
 import useScroll from "@/hooks/useScroll";
+import Metatag from "./Metatag";
 
 export default function Header() {
   const router = useRouter();
@@ -19,15 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <Head>
-        <title>Mail Movies</title>
-        <meta
-          name="description"
-          content="Get full details about your favourite movie via Mail Movies straight to your e-mail"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Metatag />
       <Box
         component="header"
         sx={{
