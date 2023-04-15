@@ -4,8 +4,10 @@ import Head from "next/head";
 import Logo from "@/components/Logo";
 import Search from "@/components/Search";
 import { Container } from "@mui/material";
+import { useRouter } from "next/router";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -36,7 +38,7 @@ export default function Header() {
           }}
         >
           <Logo />
-          <Search />
+          {router.route === "/" && <Search />}
         </Container>
       </Box>
     </>
