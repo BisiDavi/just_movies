@@ -10,7 +10,7 @@ function MovieLoaderItem() {
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"
       className="my-2"
-      title="loading movie..."
+      title="fetching movie..."
       uniqueKey="movies"
     >
       <rect x="0" y="0%" rx="4px" ry="4px" width="100%" height="100px" />

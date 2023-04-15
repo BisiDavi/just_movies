@@ -22,15 +22,10 @@ export default function SubscribeForm({ movie }: Props) {
 
   async function onSubmitHandler(e: any) {
     e.preventDefault();
-    await fetch("/api/send-email", {
-      method: "post",
-      body: JSON.stringify({
+    await axios
+      .post("/api/send-email", {
         movie,
         email,
-      }),
-    })
-      .then((resp) => {
-        return resp.json();
       })
       .then((resp) => console.log("respo", resp))
       .catch((err) => console.log("error", err));

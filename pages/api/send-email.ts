@@ -2,13 +2,13 @@ import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const reqBody = JSON.parse(req.body);
-  const { email, movie } = reqBody;
+  const { email, movie } = req.body;
+
+  console.log("movie", movie);
 
   switch (req.method) {
     case "POST":
       try {
-        console.log("movie", movie);
         return mailjet
           .apiConnect(
             `${process.env.MAILJET_API_KEY}`,
@@ -40,12 +40,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               },
             ],
           })
-          .then((resp) => {
-            console.log("resp", resp);
+          .then(() => {
             return res.status(200).send("message sent");
           });
       } catch (error: any) {
-        console.log("error again,olubisi", error);
         return res.status(error.code).send("message error");
       }
   }
