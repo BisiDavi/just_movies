@@ -4,8 +4,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, movie } = req.body;
 
-  console.log("movie", movie);
-
   switch (req.method) {
     case "POST":
       try {
@@ -20,7 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               {
                 From: {
                   Email: "oludavidconnect@gmail.com",
-                  Name: "oludavidconnect@gmail.com",
+                  Name: "MailMovies",
                 },
                 To: [
                   {
@@ -28,15 +26,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
                     Name: email,
                   },
                 ],
-                // TemplateID: `${process.env.MAILJET_TEMPLATE_ID}`,
-                // TemplateLanguage: true,
-                Subject: `Details about`,
-                // Variables: { ...movie },
-                TextPart: "Hello David",
-                TemplateErrorReporting: {
-                  Email: "oludavidconnect@gmail.com",
-                  name: "Olubisi David",
-                },
+                TemplateID: 4736077,
+                TemplateLanguage: true,
+                Subject: `Details about ${movie.Title}`,
+                Variables: { ...movie },
               },
             ],
           })
