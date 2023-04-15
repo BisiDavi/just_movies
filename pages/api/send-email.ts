@@ -26,7 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               ],
               TemplateID: process.env.MAILJET_TEMPLATE_ID,
               TemplateLanguage: true,
-              Subject: "Details about your favourite Movie",
+              Subject: `Details about ${data.Title}`,
               Variables: { ...data },
               TemplateErrorReporting: {
                 Email: "oludavidconnect@gmail.com",

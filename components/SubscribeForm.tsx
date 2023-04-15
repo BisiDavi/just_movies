@@ -22,7 +22,9 @@ export default function SubscribeForm({ movie }: Props) {
 
   function onSubmitHandler() {
     if (userEmail) {
-      axios.post("/api/send-email", { data: movie });
+      axios
+        .post("/api/send-email", { data: movie })
+        .then((resp) => console.log("resp", resp));
     }
   }
 
