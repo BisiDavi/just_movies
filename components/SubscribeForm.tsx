@@ -52,6 +52,7 @@ export default function SubscribeForm({ movie }: Props) {
             borderTopLeftRadius: "4px",
             borderBottomLeftRadius: "4px",
           }}
+          value={email}
           type="email"
           onChange={inputHandler}
           required
