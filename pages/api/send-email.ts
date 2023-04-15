@@ -37,10 +37,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             ],
           })
           .then(() => {
-            res.status(200).json({ status: "message sent" });
+            res.status(200).send("message sent");
           });
       } catch (error) {
-        res.status(400).json({ status: "message error", error });
+        console.log("error", error);
+        res.status(400).send("message error");
       }
     }
   }

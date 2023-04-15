@@ -20,10 +20,10 @@ export default function SubscribeForm({ movie }: Props) {
     setEmail(e.target.value);
   }
 
-  function onSubmitHandler(e: any) {
+  async function onSubmitHandler(e: any) {
     e.preventDefault();
     if (email) {
-      axios
+      await axios
         .post("/api/send-email", { data: movie, email })
         .then((resp) => console.log("resp", resp));
     }
