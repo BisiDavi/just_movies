@@ -16,13 +16,15 @@ import { useAppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Search() {
   const dispatch = useAppDispatch();
-  const { movie, searching ,search} = useAppSelector((state) => state.movie);
+  const { movie, searching, search } = useAppSelector((state) => state.movie);
+
+  const disableBtn = search ? false : true;
 
   function searchHandler() {
     if (!movie) {
       dispatch(searchMovie(search));
       dispatch(setSearchingStatus(true));
-    } else if(movie) {
+    } else if (movie && search) {
       dispatch(resetSearch());
     }
   }
@@ -51,7 +53,7 @@ export default function Search() {
         position="end"
         sx={{ position: "absolute", zIndex: 4, right: "0px", top: "16px" }}
       >
-        <Button onClick={searchHandler}>
+        <Button onClick={searchHandler} disabled={disableBtn}>
           {!searching ? (
             movie ? (
               <CloseIcon />

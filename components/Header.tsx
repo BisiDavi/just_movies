@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import Logo from "@/components/Logo";
 import Search from "@/components/Search";
-
 import useScroll from "@/hooks/useScroll";
 
 export default function Header() {
@@ -12,12 +11,14 @@ export default function Header() {
   const { scroll } = useScroll();
 
   const headerPosition =
-    Number(scroll) > 100
+    Number(scroll) > 100 && router.route === "/"
       ? { position: "fixed", top: 0, width: "100%", zIndex: 10, left: 0 }
       : "";
 
   const headerClassName =
-    Number(scroll) > 100 ? "animate__animated animate__fadeInDown" : "";
+    Number(scroll) > 100 && router.route === "/"
+      ? "animate__animated animate__fadeInDown"
+      : "";
 
   return (
     <Box
