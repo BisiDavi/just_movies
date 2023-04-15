@@ -20,7 +20,8 @@ export default function SubscribeForm({ movie }: Props) {
     setUserEmail(e.target.value);
   }
 
-  function onSubmitHandler() {
+  function onSubmitHandler(e: any) {
+    e.preventDefault();
     if (userEmail) {
       axios
         .post("/api/send-email", { data: movie })
