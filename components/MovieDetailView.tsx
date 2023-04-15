@@ -1,4 +1,5 @@
 import Grid from "@mui/material/Grid";
+
 import MovieDetailImageView from "@/components/MovieDetailImageView";
 import MovieDetailTextView from "@/components/MovieDetailTextView";
 import type { movieDetailType } from "@/types";
@@ -8,7 +9,6 @@ interface Props {
 }
 
 export default function MovieDetailView({ movie }: Props) {
-  console.log("movie", movie);
   return (
     <Grid
       container
