@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -7,6 +6,7 @@ import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import MailIcon from "@mui/icons-material/Mail";
 
+import useFormMutation from "@/hooks/useFormMutation";
 import type { movieDetailType } from "@/types";
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
 
 export default function SubscribeForm({ movie }: Props) {
   const [email, setEmail] = useState("");
+  const { mutate } = useFormMutation(setEmail);
 
   function inputHandler(e: any) {
     setEmail(e.target.value);
@@ -22,13 +23,7 @@ export default function SubscribeForm({ movie }: Props) {
 
   async function onSubmitHandler(e: any) {
     e.preventDefault();
-    await axios
-      .post("/api/send-email", {
-        movie,
-        email,
-      })
-      .then((resp) => console.log("respo", resp))
-      .catch((err) => console.log("error", err));
+    mutate({ movie, email });
   }
 
   return (
