@@ -6,7 +6,6 @@ import Logo from "@/components/Logo";
 import Search from "@/components/Search";
 
 import useScroll from "@/hooks/useScroll";
-import Metatag from "./Metatag";
 
 export default function Header() {
   const router = useRouter();
@@ -18,31 +17,28 @@ export default function Header() {
       : "";
 
   return (
-    <>
-      <Metatag />
-      <Box
-        component="header"
+    <Box
+      component="header"
+      sx={{
+        bgcolor: "red",
+        color: "white",
+        ...headerPosition,
+      }}
+    >
+      <Container
         sx={{
-          bgcolor: "red",
-          color: "white",
-          ...headerPosition,
+          display: "flex",
+          justifyContent: "space-between",
+          width: "100%",
+          p: { lg: 2, xs: "20px 30px" },
+          flexDirection: { md: "row", xs: "column" },
+          gap: { xs: 4, lg: 0 },
+          alignItems: "center",
         }}
       >
-        <Container
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            p: { lg: 2, xs: "20px 30px" },
-            flexDirection: { md: "row", xs: "column" },
-            gap: { xs: 4, lg: 0 },
-            alignItems: "center",
-          }}
-        >
-          <Logo />
-          {router.route === "/" && <Search />}
-        </Container>
-      </Box>
-    </>
+        <Logo />
+        {router.route === "/" && <Search />}
+      </Container>
+    </Box>
   );
 }
