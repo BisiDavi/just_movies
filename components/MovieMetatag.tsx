@@ -1,6 +1,6 @@
 import Head from "next/head";
-import type { movieDetailType } from "@/types";
 import generateMovieLD from "@/utils/generateMovieLD";
+import type { movieDetailType } from "@/types";
 
 interface Props {
   movie: movieDetailType;

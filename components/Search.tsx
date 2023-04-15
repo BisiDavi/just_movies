@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -11,22 +10,26 @@ import {
   resetSearch,
   searchMovie,
   setSearchingStatus,
+  updateSearch,
 } from "@/redux/movies-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Search() {
-  const [searchState, setSearchState] = useState("");
+  const { search } = useAppSelector((state) => state.movie);
   const dispatch = useAppDispatch();
   const { movie, searching } = useAppSelector((state) => state.movie);
 
   function searchHandler() {
     if (!movie) {
-      dispatch(searchMovie(searchState));
+      dispatch(searchMovie(search));
       dispatch(setSearchingStatus(true));
     } else {
       dispatch(resetSearch());
-      setSearchState("");
     }
+  }
+
+  function inputHandler(e: any) {
+    dispatch(updateSearch(e.target.value));
   }
 
   return (
@@ -42,8 +45,8 @@ export default function Search() {
         className="search_movies"
         sx={{ color: "white", "::placeholder": { color: "white" } }}
         fullWidth={true}
-        value={searchState}
-        onChange={(e) => setSearchState(e.target.value)}
+        value={search}
+        onChange={inputHandler}
       />
       <InputAdornment
         position="end"
