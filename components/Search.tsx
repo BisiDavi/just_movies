@@ -57,7 +57,7 @@ export default function Search() {
               <SearchIcon />
             )
           ) : (
-            <CircularProgress className="circularProgress" />
+            movie && <CircularProgress className="circularProgress" />
           )}
         </Button>
       </InputAdornment>
