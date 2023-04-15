@@ -22,14 +22,20 @@ export default function MovieLoader() {
   const arrayGroup = new Array(8).fill(0);
   return (
     <Grid
+      container
+      spacing={2}
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
+        gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
         gap: "30px",
+        width: "100%",
+        mx: 0,
       }}
     >
       {arrayGroup.map((_, index) => (
-        <MovieLoaderItem key={index} />
+        <Grid xs={12} key={index}>
+          <MovieLoaderItem />
+        </Grid>
       ))}
     </Grid>
   );
