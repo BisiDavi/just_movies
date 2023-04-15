@@ -8,6 +8,7 @@ import SpinnerRipple from "@/components/SpinnerRipple";
 import Layout from "@/layout";
 import MovieDetailView from "@/components/MovieDetailView";
 import { fetchMovie } from "@/utils/fetchMovies";
+import MovieMetatag from "@/components/MovieMetatag";
 
 export default function MoviesPage() {
   const router = useRouter();
@@ -19,21 +20,24 @@ export default function MoviesPage() {
   });
 
   return (
-    <Layout>
-      <Container
-        component="section"
-        sx={{ minHeight: "82vh", py: { xs: 4, md: 6 } }}
-      >
-        {status === "error" ? (
-          <Typography>Error fetching data</Typography>
-        ) : status === "loading" ? (
-          <Box sx={{ height: "50vh", display: "flex" }}>
-            <SpinnerRipple />
-          </Box>
-        ) : (
-          <MovieDetailView movie={data.data} />
-        )}
-      </Container>
-    </Layout>
+    <>
+      {status === "success" && <MovieMetatag movie={data.data} />}
+      <Layout>
+        <Container
+          component="section"
+          sx={{ minHeight: "82vh", py: { xs: 4, md: 6 } }}
+        >
+          {status === "error" ? (
+            <Typography>Error fetching data</Typography>
+          ) : status === "loading" ? (
+            <Box sx={{ height: "50vh", display: "flex" }}>
+              <SpinnerRipple />
+            </Box>
+          ) : (
+            <MovieDetailView movie={data.data} />
+          )}
+        </Container>
+      </Layout>
+    </>
   );
 }
