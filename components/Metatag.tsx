@@ -20,7 +20,7 @@ export default function Metatag() {
       />
       <meta
         property="og:image"
-        content="https://res.cloudinary.com/verrb-inc/image/upload/v1681525228/Screenshot_2023-04-15_at_3.16.51_AM_yrf6oz.png"
+        content="https://res.cloudinary.com/verrb-inc/image/upload/v1681564848/android-chrome-512x512_cz65uw.png"
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />

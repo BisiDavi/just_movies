@@ -17,10 +17,11 @@ export default function Header() {
       : "";
 
   const headerClassName =
-    Number(scroll) > 100 ? "animate__animated animate__fadeInUp" : "";
+    Number(scroll) > 100 ? "animate__animated animate__fadeInDown" : "";
 
   return (
     <Box
+      className={headerClassName}
       component="header"
       sx={{
         bgcolor: "red",
