@@ -14,17 +14,17 @@ interface Props {
 }
 
 export default function SubscribeForm({ movie }: Props) {
-  const [userEmail, setUserEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   function inputHandler(e: any) {
-    setUserEmail(e.target.value);
+    setEmail(e.target.value);
   }
 
   function onSubmitHandler(e: any) {
     e.preventDefault();
-    if (userEmail) {
+    if (email) {
       axios
-        .post("/api/send-email", { data: movie })
+        .post("/api/send-email", { data: movie, email })
         .then((resp) => console.log("resp", resp));
     }
   }
