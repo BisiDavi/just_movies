@@ -25,7 +25,8 @@ export default function SubscribeForm({ movie }: Props) {
     if (email) {
       await axios
         .post("/api/send-email", { data: movie, email })
-        .then((resp) => console.log("resp", resp));
+        .then((resp) => console.log("resp", resp))
+        .catch((err) => console.log("error-mail", err));
     }
   }
 

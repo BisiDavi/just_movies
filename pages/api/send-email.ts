@@ -4,9 +4,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, data } = req.body;
   switch (req.method) {
-    case "POST": {
+    case "POST":
       try {
-        mailjet
+        return mailjet
           .apiConnect(
             `${process.env.MAILJET_API_KEY}`,
             `${process.env.MAILJET_SECRET_KEY}`
@@ -25,7 +25,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
                     Name: email,
                   },
                 ],
-                TemplateID: process.env.MAILJET_TEMPLATE_ID,
+                TemplateID: `${process.env.MAILJET_TEMPLATE_ID}`,
                 TemplateLanguage: true,
                 Subject: `Details about ${data.Title}`,
                 Variables: { ...data },
@@ -36,13 +36,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               },
             ],
           })
-          .then(() => {
+          .then((resp) => {
+            console.log("resp", resp);
             return res.status(200).send("message sent");
           });
-      } catch (error) {
+      } catch (error: any) {
         console.log("error again,olubisi", error);
-        return res.status(400).send("message error");
+        return res.status(error.code).send("message error");
       }
-    }
   }
 }
