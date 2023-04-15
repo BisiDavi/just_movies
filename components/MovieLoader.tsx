@@ -23,7 +23,6 @@ export default function MovieLoader() {
   return (
     <Grid
       container
-      spacing={2}
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
@@ -33,7 +32,7 @@ export default function MovieLoader() {
       }}
     >
       {arrayGroup.map((_, index) => (
-        <Grid xs={12} key={index}>
+        <Grid xs={12} item key={index}>
           <MovieLoaderItem />
         </Grid>
       ))}
