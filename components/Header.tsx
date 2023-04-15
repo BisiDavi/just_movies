@@ -36,7 +36,7 @@ export default function Header() {
           width: "100%",
           p: { lg: 2, xs: "20px 30px" },
           flexDirection: { md: "row", xs: "column" },
-          gap: { xs: 4, lg: 0 },
+          gap: { xs: 2, lg: 0 },
           alignItems: "center",
         }}
       >
