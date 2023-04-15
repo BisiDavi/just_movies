@@ -1,8 +1,8 @@
-import store from "@/redux/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import store from "@/redux/store";
 
 import "react-toastify/dist/ReactToastify.css";
 
