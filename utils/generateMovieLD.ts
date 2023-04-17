@@ -2,7 +2,7 @@ import type { movieDetailType } from "@/types";
 
 type castType = Array<{ "@type": string; name: string }>;
 
-export default function generateMovieLD(movie: movieDetailType) {
+export default function retgenerateMovieLD(movie: movieDetailType) {
   const _actors = movie.Actors.split(",");
   const _writer = movie.Writer.split(",");
 
@@ -33,7 +33,7 @@ export default function generateMovieLD(movie: movieDetailType) {
             "ratingCount": ${movie.imdbVotes},
           },
           "author": ${writer},
-          "description": ${movie.Plot}
+          "description": ${movie.Plot},
           "director": {
             "@type": "Person",
             "name": ${movie.Director}
