@@ -34,6 +34,8 @@ export default function MovieDetailTextView({ movie }: Props) {
       <Typography>Director: {movie.Director}</Typography>
       <Typography>Writer: {movie.Writer}</Typography>
       <Typography>Genre: {movie.Genre}</Typography>
+      <Typography>Type: {movie.Type}</Typography>
+      {movie.Type === "series" && <Typography>Total Seasons: {movie.totalSeasons}</Typography>}
       <Typography>Language: {movie.Language}</Typography>
       <Typography>Country: {movie.Country}</Typography>
       <Typography>Awards: {movie.Awards}</Typography>

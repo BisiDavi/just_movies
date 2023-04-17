@@ -11,6 +11,7 @@ export type movieDetailType = {
   Title: string;
   Year: string;
   Plot: string;
+  Type: string;
   Director: string;
   Writer: string;
   Actors: string;
@@ -24,5 +25,6 @@ export type movieDetailType = {
   imdbRating: string;
   imdbVotes: string;
   BoxOffice: string;
+  totalSeasons?: number;
   Ratings: Array<{ Source: String; Value: string }>;
 };
