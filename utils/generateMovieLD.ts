@@ -25,20 +25,20 @@ export default function retgenerateMovieLD(movie: movieDetailType) {
   return {
     __html: `{
           "@context": "https://schema.org",
-          "@type": ${movie.Genre},
-          "actor": ${actors},
+          "@type": "${movie.Genre}",
+          "actor": "${actors}",
           "aggregateRating": {
             "@type": "AggregateRating",
-            "bestRating": ${movie.imdbRating},
-            "ratingCount": ${movie.imdbVotes},
+            "bestRating": "${movie.imdbRating}",
+            "ratingCount": "${movie.imdbVotes}",
           },
-          "author": ${writer},
-          "description": ${movie.Plot},
+          "author": "${writer}",
+          "description": "${movie.Plot}",
           "director": {
             "@type": "Person",
-            "name": ${movie.Director}
+            "name": "${movie.Director}"
           },
-          "name":${movie.Title}
+          "name":"${movie.Title}"
         }`,
   };
 }
