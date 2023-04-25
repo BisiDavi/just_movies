@@ -7,11 +7,12 @@ export default function TypewriterEffect() {
     <Container
       component="section"
       sx={{
-        m: "30px auto",
+        m: { lg: "30px auto", xs: "20px auto" },
         bgcolor: "#f5f5f5",
         p: 2,
         borderRadius: 2,
         boxShadow: "0px 0px 1px 2px #df3737c9",
+        width: { lg: "100%", xs: "90%" },
       }}
     >
       <Box
@@ -23,11 +24,18 @@ export default function TypewriterEffect() {
           textAlign: "",
           m: "auto",
           justifyContent: "center",
-          fontSize: 24,
+          fontSize: { lg: 24, xs: 14 },
         }}
       >
         Search for your favourite
-        <Box sx={{ color: "red", m: "0px 4px", ml: 5, fontSize: 30 }}>
+        <Box
+          sx={{
+            color: "red",
+            m: "0px 4px",
+            ml: { lg: 5, xs: 2 },
+            fontSize: { lg: 30, xs: 16 },
+          }}
+        >
           <Typewriter
             options={{
               strings: ["Movies", "Series", "Anime"],
@@ -36,7 +44,9 @@ export default function TypewriterEffect() {
             }}
           />
         </Box>
-        <Box sx={{ ml: 10 }}>and get the details straight to your email.</Box>
+        <Box sx={{ ml: { lg: 10, xs: 4 } }}>
+          and get the details straight to your email.
+        </Box>
       </Box>
     </Container>
   );
