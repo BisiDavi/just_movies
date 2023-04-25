@@ -11,6 +11,7 @@ export default function TypewriterEffect() {
         bgcolor: "#f5f5f5",
         p: 2,
         borderRadius: 2,
+        boxShadow: "0px 0px 1px 2px #df3737c9",
       }}
     >
       <Box
@@ -29,7 +30,7 @@ export default function TypewriterEffect() {
         <Box sx={{ color: "red", m: "0px 4px", ml: 5, fontSize: 30 }}>
           <Typewriter
             options={{
-              strings: ["Movies", "Series", "Anime", "Comedy"],
+              strings: ["Movies", "Series", "Anime"],
               autoStart: true,
               loop: true,
             }}
