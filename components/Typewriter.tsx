@@ -1,32 +1,42 @@
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Typewriter from "typewriter-effect";
 
 export default function TypewriterEffect() {
   return (
-    <Box component="section" sx={{ m: 5 }}>
+    <Container
+      component="section"
+      sx={{
+        m: "30px auto",
+        bgcolor: "#f5f5f5",
+        p: 2,
+        borderRadius: 2,
+      }}
+    >
       <Box
         component="span"
         sx={{
           fontWeight: "bold",
           display: "flex",
-          textAlign: "center",
+          flexDirection: "column",
+          textAlign: "",
           m: "auto",
           justifyContent: "center",
-          fontSize: 32,
+          fontSize: 24,
         }}
       >
         Search for your favourite
-        <Box sx={{ color: "red", m: "0px 4px" }}>
+        <Box sx={{ color: "red", m: "0px 4px", ml: 5, fontSize: 30 }}>
           <Typewriter
             options={{
-              strings: ["movies", "series"],
+              strings: ["Movies", "Series", "Anime", "Comedy"],
               autoStart: true,
               loop: true,
             }}
           />
         </Box>
-        and get the details mailed to your email.
+        <Box sx={{ ml: 10 }}>and get the details straight to your email.</Box>
       </Box>
-    </Box>
+    </Container>
   );
 }
