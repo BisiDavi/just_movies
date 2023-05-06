@@ -16,7 +16,7 @@ export default function Metatag() {
       <meta
         name="og:description"
         content="Get full details about your favourite movie via Mail Movies straight to your e-mail"
-        key="desc"
+        key="og-desc"
       />
       <meta
         property="og:image"
