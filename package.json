@@ -23,6 +23,7 @@
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "fuzzy-search": "^3.2.1",
+    "googleapis": "^148.0.0",
     "next": "13.3.0",
     "node-mailjet": "^5.1.1",
     "react": "18.2.0",
