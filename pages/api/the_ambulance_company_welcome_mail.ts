@@ -68,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const { email } = InquiryformDetails;
 
 	try {
-		// await appendToSheet(InquiryformDetails);
+		await appendToSheet(InquiryformDetails);
 		return mailjet
 			.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
 			.post("send", { version: "v3.1" })
