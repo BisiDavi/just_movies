@@ -60,16 +60,7 @@ async function appendToSheet(formDetails: FormDetailsType) {
 	}
 }
 
-const cors = initMiddleware(
-	Cors({
-		origin: "https://www.theambulancecompany.com",
-		methods: ["GET, POST, OPTIONS"],
-	}),
-);
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	await cors(req, res);
-
 	res.setHeader("Access-Control-Allow-Origin", "https://www.theambulancecompany.com"); // or restrict to your domain
 	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,");
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
