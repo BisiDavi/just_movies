@@ -1,8 +1,6 @@
 import google from "googleapis";
-import Cors from "cors";
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
-import initMiddleware from "../../lib/init-middleware";
 
 type FormDetailsType = {
 	firstName: string;
