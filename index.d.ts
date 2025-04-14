@@ -1,1 +1,2 @@
-declare module 'googleapis'
+declare module "googleapis";
+declare module "cors";

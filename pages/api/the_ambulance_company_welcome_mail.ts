@@ -1,6 +1,8 @@
+import google from "googleapis";
+import Cors from "cors";
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
-import google from "googleapis";
+import initMiddleware from "../../lib/init-middleware";
 
 type FormDetailsType = {
 	firstName: string;
@@ -13,10 +15,10 @@ type FormDetailsType = {
 
 // Load the service account key
 const auth = new google.auth.GoogleAuth({
-    credentials: {
-        private_key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-        client_email: process.env.GOOGLE_CLIENT_EMAIL
-    },
+	credentials: {
+		private_key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+		client_email: process.env.GOOGLE_CLIENT_EMAIL,
+	},
 	scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
@@ -58,17 +60,27 @@ async function appendToSheet(formDetails: FormDetailsType) {
 	}
 }
 
+const cors = initMiddleware(
+	Cors({
+		origin: "*",
+		methods: ["GET, POST, OPTIONS"],
+	}),
+);
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // or restrict to your domain
+	res.setHeader("Access-Control-Allow-Origin", "*"); // or restrict to your domain
 	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+	await cors(req, res);
+
 	const { email } = req.body;
-    const InquiryformDetails = req.body as FormDetailsType
+	const InquiryformDetails = req.body as FormDetailsType;
 
 	switch (req.method) {
 		case "POST":
 			try {
-                await appendToSheet(InquiryformDetails);
+				await appendToSheet(InquiryformDetails);
 				return mailjet
 					.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
 					.post("send", { version: "v3.1" })
