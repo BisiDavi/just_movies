@@ -23,7 +23,7 @@ const auth = new google.auth.GoogleAuth({
 
 async function appendToSheet(formDetails: FormDetailsType) {
 	try {
-		const client = await auth.getClient();
+		const client = await auth?.getClient();
 		const sheets = google.sheets({ version: "v4", auth: client });
 
 		const spreadsheetId = `${process.env.SPREADSHEET_ID}`;
