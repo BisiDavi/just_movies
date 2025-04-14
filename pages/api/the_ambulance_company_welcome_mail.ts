@@ -1,6 +1,7 @@
 import google from "googleapis";
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
 type FormDetailsType = {
 	firstName: string;
@@ -58,6 +59,12 @@ async function appendToSheet(formDetails: FormDetailsType) {
 	}
 }
 
+const corsHeader = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+	"Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	res.setHeader("Access-Control-Allow-Credentials", true as any);
 	res.setHeader("Access-Control-Allow-Origin", "*"); // Replace * with your domain for production
@@ -102,9 +109,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 							},
 						],
 					})
-					.then(() => {
-						return res.status(200).send("message sent");
-					});
+					.then(() => 
+						NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader });
+					);
 			} catch (error: any) {
 				return res.status(error.code).send("message error");
 			}
