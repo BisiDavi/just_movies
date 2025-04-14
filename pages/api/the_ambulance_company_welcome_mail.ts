@@ -21,7 +21,7 @@ async function appendToSheet(formDetails: FormDetailsType) {
 			scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 		});
 
-		const doc = new GoogleSpreadsheet("<the sheet ID from the url>", serviceAccountAuth);
+		const doc = new GoogleSpreadsheet("1X2yJDfzS3SACvitEd5Kg6twUR6Qs13HstDAixmLqJK4", serviceAccountAuth);
 
 		await doc.loadInfo();
 
