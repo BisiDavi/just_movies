@@ -64,6 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 
 	const InquiryformDetails = JSON.parse(req.body) as FormDetailsType;
+    console.log("InquiryformDetails", InquiryformDetails);
 	const { email } = InquiryformDetails;
 
 	try {
@@ -91,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					},
 				],
 			})
-			.then(() => NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader }));
+			.then(() =>  res.status(200).send("message sent"));
 	} catch (error: any) {
 		return res.status(error.code).send("message error");
 	}
