@@ -59,14 +59,17 @@ async function appendToSheet(formDetails: FormDetailsType) {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	res.setHeader("Access-Control-Allow-Origin", "https://www.theambulancecompany.com"); // or restrict to your domain
-	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,");
-	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+	res.setHeader("Access-Control-Allow-Credentials", true as any);
+	res.setHeader("Access-Control-Allow-Origin", "*"); // Replace * with your domain for production
+	res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
+	res.setHeader(
+		"Access-Control-Allow-Headers",
+		"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+	);
 
-	// Handle preflight OPTIONS request
+	// Handle OPTIONS request (preflight)
 	if (req.method === "OPTIONS") {
-		res.status(200).end();
-		return;
+		return res.status(200).end();
 	}
 
 	const { email } = req.body;
