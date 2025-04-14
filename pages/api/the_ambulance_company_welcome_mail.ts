@@ -109,9 +109,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 							},
 						],
 					})
-					.then(() => 
-						NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader });
-					);
+					.then(() => NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader }));
 			} catch (error: any) {
 				return res.status(error.code).send("message error");
 			}
