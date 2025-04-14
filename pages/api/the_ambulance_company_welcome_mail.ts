@@ -82,36 +82,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const { email } = req.body;
 	const InquiryformDetails = req.body as FormDetailsType;
 
-	switch (req.method) {
-		case "POST":
-			try {
-				await appendToSheet(InquiryformDetails);
-				return mailjet
-					.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
-					.post("send", { version: "v3.1" })
-					.request({
-						Messages: [
+	try {
+		await appendToSheet(InquiryformDetails);
+		return mailjet
+			.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
+			.post("send", { version: "v3.1" })
+			.request({
+				Messages: [
+					{
+						From: {
+							Email: "info@theambulancecompany.com",
+							Name: "TheAmbulanceCompany",
+						},
+						To: [
 							{
-								From: {
-									Email: "info@theambulancecompany.com",
-									Name: "TheAmbulanceCompany",
-								},
-								To: [
-									{
-										Email: email,
-										Name: email,
-									},
-								],
-								TemplateID: 6898595,
-								TemplateLanguage: true,
-								Subject: "Thanks for reaching out",
-								Variables: { firstName: req.body.firstName, lastName: req.body.lastName },
+								Email: email,
+								Name: email,
 							},
 						],
-					})
-					.then(() => NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader }));
-			} catch (error: any) {
-				return res.status(error.code).send("message error");
-			}
+						TemplateID: 6898595,
+						TemplateLanguage: true,
+						Subject: "Thanks for reaching out",
+						Variables: { firstName: req.body.firstName, lastName: req.body.lastName },
+					},
+				],
+			})
+			.then(() => NextResponse.json({ success: true, message: "message sent" }, { headers: corsHeader }));
+	} catch (error: any) {
+		return res.status(error.code).send("message error");
 	}
 }
