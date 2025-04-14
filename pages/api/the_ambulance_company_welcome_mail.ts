@@ -1,4 +1,5 @@
-import google from "googleapis";
+import { JWT } from "google-auth-library";
+import { GoogleSpreadsheet } from "google-spreadsheet";
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
@@ -12,48 +13,31 @@ type FormDetailsType = {
 	message: string;
 };
 
-// Load the service account key
-const auth = new google.auth.GoogleAuth({
-	credentials: {
-		private_key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-		client_email: process.env.GOOGLE_CLIENT_EMAIL,
-	},
-	scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
-
 async function appendToSheet(formDetails: FormDetailsType) {
 	try {
-		const client = await auth?.getClient();
-		const sheets = google.sheets({ version: "v4", auth: client });
-
-		const spreadsheetId = `${process.env.SPREADSHEET_ID}`;
-		const range = "Sheet1!A:G"; // Adjust range
-
-		const timestamp = new Date().toISOString();
-		const values = [
-			[
-				timestamp,
-				formDetails.firstName,
-				formDetails.lastName,
-				formDetails.email,
-				formDetails.phone,
-				formDetails.requirements,
-				formDetails.message,
-			],
-		];
-
-		const resource = {
-			values,
-		};
-
-		const result = await sheets.spreadsheets.values.append({
-			spreadsheetId,
-			range,
-			valueInputOption: "RAW",
-			resource,
+		const serviceAccountAuth = new JWT({
+			email: process.env.GOOGLE_CLIENT_EMAIL,
+			key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+			scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 		});
 
-		console.log(`${result.data.updates.updatedCells} cells updated.`);
+		const doc = new GoogleSpreadsheet("<the sheet ID from the url>", serviceAccountAuth);
+
+		await doc.loadInfo();
+
+		const sheet = doc.sheetsByIndex[0];
+
+		const timestamp = new Date().toISOString();
+
+		await sheet.addRow({
+			Date: timestamp,
+			FirstName: formDetails.firstName,
+			LastName: formDetails.lastName,
+			Email: formDetails.email,
+			Phone: formDetails.phone,
+			Requirements: formDetails.requirements,
+			Message: formDetails.message,
+		});
 	} catch (error) {
 		console.error(`Unable to save details to spreadsheet due to : ${error}`);
 	}
@@ -79,8 +63,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return res.status(200).end();
 	}
 
-	const { email } = req.body;
-	const InquiryformDetails = req.body as FormDetailsType;
+	const InquiryformDetails = JSON.parse(req.body) as FormDetailsType;
+	const { email } = InquiryformDetails;
 
 	try {
 		await appendToSheet(InquiryformDetails);
@@ -103,7 +87,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 						TemplateID: 6898595,
 						TemplateLanguage: true,
 						Subject: "Thanks for reaching out",
-						Variables: { firstName: req.body.firstName, lastName: req.body.lastName },
+						Variables: { firstName: InquiryformDetails.firstName, lastName: InquiryformDetails.lastName },
 					},
 				],
 			})

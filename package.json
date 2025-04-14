@@ -24,6 +24,8 @@
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "fuzzy-search": "^3.2.1",
+    "google-auth-library": "^9.15.1",
+    "google-spreadsheet": "^4.1.4",
     "googleapis": "^148.0.0",
     "next": "13.3.0",
     "node-mailjet": "^5.1.1",
