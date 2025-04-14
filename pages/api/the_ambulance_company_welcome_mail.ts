@@ -68,6 +68,8 @@ const cors = initMiddleware(
 );
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+	await cors(req, res);
+
 	res.setHeader("Access-Control-Allow-Origin", "https://www.theambulancecompany.com"); // or restrict to your domain
 	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -77,8 +79,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		res.status(200).end();
 		return;
 	}
-
-	await cors(req, res);
 
 	const { email } = req.body;
 	const InquiryformDetails = req.body as FormDetailsType;
