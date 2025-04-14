@@ -63,8 +63,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return res.status(200).end();
 	}
 
-	const InquiryformDetails = JSON.parse(req.body) as FormDetailsType;
-    console.log("InquiryformDetails", InquiryformDetails);
+	const InquiryformDetails = req.body as FormDetailsType;
+	console.log("InquiryformDetails", InquiryformDetails);
 	const { email } = InquiryformDetails;
 
 	try {
@@ -92,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					},
 				],
 			})
-			.then(() =>  res.status(200).send("message sent"));
+			.then(() => res.status(200).send("message sent"));
 	} catch (error: any) {
 		return res.status(error.code).send("message error");
 	}
