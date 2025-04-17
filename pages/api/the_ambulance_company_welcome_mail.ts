@@ -14,8 +14,6 @@ type FormDetailsType = {
 
 async function appendToSheet(formDetails: FormDetailsType) {
 	try {
-		console.log("appendToSheet___formDetails", formDetails);
-		
 		const serviceAccountAuth = new JWT({
 			email: process.env.GOOGLE_CLIENT_EMAIL,
 			key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, "\n"),
@@ -60,7 +58,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 
 	const InquiryformDetails = req.body as FormDetailsType;
-	console.log("InquiryformDetails", InquiryformDetails);
 	const { email } = InquiryformDetails;
 
 	try {
@@ -111,7 +108,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					},
 				],
 			});
-		return res.status(200).send("message sent");
+		return res.status(200).json({ status: true, message: "message sent" });
 	} catch (error: any) {
 		return res.status(error.code).send("message error");
 	}
