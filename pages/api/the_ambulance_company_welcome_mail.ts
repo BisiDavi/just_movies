@@ -2,7 +2,6 @@ import { JWT } from "google-auth-library";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import mailjet from "node-mailjet";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
 
 type FormDetailsType = {
 	firstName: string;
@@ -69,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 	try {
 		await appendToSheet(InquiryformDetails);
-		return mailjet
+		await mailjet
 			.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
 			.post("send", { version: "v3.1" })
 			.request({
@@ -91,8 +90,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 						Variables: { firstName: InquiryformDetails.firstName, lastName: InquiryformDetails.lastName },
 					},
 				],
-			})
-			.then(() => res.status(200).send("message sent"));
+			});
+		await mailjet
+			.apiConnect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_SECRET_KEY}`)
+			.post("send", { version: "v3.1" })
+			.request({
+				Messages: [
+					{
+						From: {
+							Email: "info@theambulancecompany.com",
+							Name: "TheAmbulanceCompany",
+						},
+						To: [
+							{
+								Email: "info@theambulancecompany.com",
+								Name: "Admin",
+							},
+						],
+						TemplateID: 6912023,
+						TemplateLanguage: true,
+						Subject: "New Request",
+						Variables: { email: InquiryformDetails.email },
+					},
+				],
+			});
+		return res.status(200).send("message sent");
 	} catch (error: any) {
 		return res.status(error.code).send("message error");
 	}
