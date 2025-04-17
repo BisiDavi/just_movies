@@ -14,6 +14,8 @@ type FormDetailsType = {
 
 async function appendToSheet(formDetails: FormDetailsType) {
 	try {
+		console.log("appendToSheet___formDetails", formDetails);
+		
 		const serviceAccountAuth = new JWT({
 			email: process.env.GOOGLE_CLIENT_EMAIL,
 			key: process.env.SPREADSHEET_PRIVATE_KEY?.replace(/\\n/g, "\n"),
@@ -28,7 +30,7 @@ async function appendToSheet(formDetails: FormDetailsType) {
 
 		const timestamp = new Date().toISOString();
 
-		await sheet.addRow({
+		const result = await sheet.addRow({
 			Date: timestamp,
 			FirstName: formDetails.firstName,
 			LastName: formDetails.lastName,
@@ -37,16 +39,11 @@ async function appendToSheet(formDetails: FormDetailsType) {
 			Requirements: formDetails.requirements,
 			Message: formDetails.message,
 		});
+		result.save();
 	} catch (error) {
 		console.error(`Unable to save details to spreadsheet due to : ${error}`);
 	}
 }
-
-const corsHeader = {
-	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-	"Access-Control-Allow-Headers": "Content-Type, Authorization",
-};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	res.setHeader("Access-Control-Allow-Credentials", true as any);
